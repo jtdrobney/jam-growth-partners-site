@@ -1,127 +1,422 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>JAM Growth Partners</title>
-<style>
-body{font-family:Arial,Helvetica,sans-serif;margin:0;background:#ffffff;color:#111}
-header{border-bottom:1px solid #e5e5e5;padding:18px 24px;position:sticky;top:0;background:#fff}
-.container{max-width:1100px;margin:auto;padding:0 20px}
-nav a{margin-right:18px;text-decoration:none;color:#333;font-size:14px}
-.hero{background:#f7f7f7;padding:80px 0}
-.hero h1{font-size:42px;line-height:1.2;margin-bottom:20px}
-.hero p{font-size:18px;color:#555;max-width:650px}
-.btn{display:inline-block;margin-top:25px;padding:12px 20px;background:#111;color:#fff;text-decoration:none;border-radius:6px}
-section{padding:70px 0}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px;margin-top:30px}
-.card{border:1px solid #e5e5e5;padding:24px;border-radius:10px;background:#fff}
-.card h3{margin-top:0}
-.dark{background:#111;color:#fff}
-.dark p{color:#ddd}
-footer{border-top:1px solid #e5e5e5;background:#f7f7f7;padding:30px 0;margin-top:60px}
-input,textarea,select{width:100%;padding:10px;margin-top:8px;margin-bottom:15px;border:1px solid #ddd;border-radius:6px}
-button{padding:12px 20px;background:#111;color:#fff;border:none;border-radius:6px}
-.logo{height:40px}
-</style>
-</head>
-<body>
+import { useState } from "react";
 
-<header>
-<div class="container" style="display:flex;align-items:center;justify-content:space-between;">
-<div style="display:flex;align-items:center;gap:10px">
-<img src="logo.png" class="logo" alt="JAM Growth Partners">
-<strong>JAM Growth Partners</strong>
-</div>
-<nav>
-<a href="#home">Home</a>
-<a href="#solutions">Solutions</a>
-<a href="#partners">Partners</a>
-<a href="#about">About</a>
-<a href="#contact">Contact</a>
-</nav>
-</div>
-</header>
+const navItems = [
+  { id: "home", label: "Home" },
+  { id: "solutions", label: "Solutions" },
+  { id: "partners", label: "Partners" },
+  { id: "about", label: "About" },
+  { id: "contact", label: "Contact" },
+];
 
-<section class="hero" id="home">
-<div class="container">
-<h1>Helping Employers Gain Control Over Healthcare, Benefits, and Workforce Costs</h1>
-<p>JAM Growth Partners works with employers, brokers, and advisors to bring smarter strategies to some of the largest operating expenses inside an organization.</p>
-<a class="btn" href="#contact">Schedule a Conversation</a>
-</div>
-</section>
+function SectionTitle({ eyebrow, title, text }) {
+  return (
+    <div className="max-w-3xl">
+      {eyebrow ? (
+        <div className="text-sm font-medium uppercase tracking-[0.18em] text-slate-500">
+          {eyebrow}
+        </div>
+      ) : null}
+      <h2 className="mt-2 text-3xl md:text-4xl font-semibold tracking-tight text-slate-900">
+        {title}
+      </h2>
+      {text ? <p className="mt-4 text-lg leading-8 text-slate-600">{text}</p> : null}
+    </div>
+  );
+}
 
-<section>
-<div class="container">
-<h2>Why Companies Work With Us</h2>
-<p>Most organizations manage healthcare, payroll, benefits, and workforce services through separate vendors. We help bring those conversations together so leadership teams can make clearer financial decisions.</p>
-<div class="grid">
-<div class="card"><h3>Employer Cost Strategy</h3><p>Helping leadership teams understand and optimize workforce related costs.</p></div>
-<div class="card"><h3>Access to Solutions</h3><p>Connecting employers with multiple strategies through a single platform.</p></div>
-<div class="card"><h3>Long-Term Partnerships</h3><p>We collaborate with brokers, advisors, and referral partners to support employers.</p></div>
-</div>
-</div>
-</section>
+function HomePage() {
+  return (
+    <>
+      <section className="bg-slate-50 border-b border-slate-200">
+        <div className="max-w-6xl mx-auto px-6 py-24 md:py-32 grid lg:grid-cols-2 gap-14 items-center">
+          <div>
+            <div className="inline-flex rounded-full border border-slate-300 px-4 py-1.5 text-sm font-medium text-slate-600 bg-white">
+              Professional Sales Organization
+            </div>
+            <h1 className="mt-6 text-4xl md:text-6xl font-semibold tracking-tight leading-tight text-slate-900">
+              Helping employers gain control over healthcare, benefits, and workforce costs.
+            </h1>
+            <p className="mt-6 text-lg leading-8 text-slate-600 max-w-2xl">
+              JAM Growth Partners helps growing companies make smarter decisions across healthcare strategy, payroll, employee benefits, workforce services, and strategic partnerships.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-4">
+              <a href="#contact-form" className="rounded-2xl bg-slate-900 text-white px-5 py-3 text-sm font-medium shadow-sm hover:opacity-90">
+                Schedule a Conversation
+              </a>
+              <a href="#audiences" className="rounded-2xl border border-slate-300 px-5 py-3 text-sm font-medium text-slate-700 hover:bg-slate-100">
+                See Who We Help
+              </a>
+            </div>
+          </div>
 
-<section id="solutions" style="background:#f7f7f7">
-<div class="container">
-<h2>Solutions for Growing Employers</h2>
-<div class="grid">
-<div class="card"><h3>Healthcare Strategy</h3><p>Support evaluating funding structures and healthcare cost management opportunities.</p></div>
-<div class="card"><h3>Workforce Cost Optimization</h3><p>Programs designed to improve employee engagement while reducing employer costs.</p></div>
-<div class="card"><h3>Payroll & HR Services</h3><p>Solutions that simplify administration and create stronger operational visibility.</p></div>
-<div class="card"><h3>PEO Brokerage</h3><p>Guidance for employers needing HR infrastructure or compliance support.</p></div>
-<div class="card"><h3>Employee Benefits</h3><p>Supplemental benefits that strengthen employee retention and protection.</p></div>
-<div class="card"><h3>Wellness Programs</h3><p>Strategies designed to support long-term employee wellbeing.</p></div>
-</div>
-</div>
-</section>
+          <div className="grid gap-4">
+            <div className="rounded-3xl border border-slate-200 bg-white p-7 shadow-sm">
+              <div className="text-sm font-medium text-slate-500">What we do</div>
+              <div className="mt-2 text-2xl font-semibold text-slate-900">Employer Cost Strategy</div>
+              <p className="mt-3 text-slate-600 leading-7">
+                We help employers explore practical strategies that improve cost visibility, reduce inefficiencies, and strengthen the employee value proposition.
+              </p>
+            </div>
+            <div className="grid sm:grid-cols-2 gap-4">
+              <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+                <div className="text-sm font-medium text-slate-500">Ideal Employer Size</div>
+                <div className="mt-2 font-semibold text-slate-900">50–2,000 employees</div>
+              </div>
+              <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+                <div className="text-sm font-medium text-slate-500">Works With</div>
+                <div className="mt-2 font-semibold text-slate-900">Employers, brokers, advisors</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-<section id="partners">
-<div class="container">
-<h2>Partnership Opportunities</h2>
-<div class="grid">
-<div class="card"><h3>Brokers</h3><p>Expand your value to clients through strategic collaboration and additional solutions.</p></div>
-<div class="card"><h3>Referral Partners</h3><p>Professionals with executive relationships can introduce employers to our platform.</p></div>
-<div class="card"><h3>Advisors</h3><p>Consultants, CPAs, and financial professionals can partner with us to serve clients.</p></div>
-</div>
-</div>
-</section>
+      <section className="max-w-6xl mx-auto px-6 py-20">
+        <SectionTitle
+          eyebrow="Why JAM Growth Partners"
+          title="A strategic platform, not just a product menu"
+          text="Most organizations manage healthcare, payroll, benefits, and workforce services through disconnected conversations. We help bring those decisions together so employers can make clearer, more effective choices."
+        />
 
-<section id="about" class="dark">
-<div class="container">
-<h2>About JAM Growth Partners</h2>
-<p>JAM Growth Partners is a professional sales organization focused on helping employers improve financial performance through smarter workforce and benefits strategies.</p>
-<p>We partner with employers, brokers, and advisors to introduce solutions addressing healthcare, payroll infrastructure, benefits, and workforce strategy.</p>
-</div>
-</section>
+        <div className="mt-12 grid md:grid-cols-3 gap-6">
+          {[
+            {
+              title: "Clearer cost strategy",
+              text: "We help leadership teams take a broader view of healthcare, benefits, and workforce-related expenses.",
+            },
+            {
+              title: "Practical solution access",
+              text: "Our platform connects employers with vetted strategies across multiple areas of need.",
+            },
+            {
+              title: "Built for long-term relationships",
+              text: "We work directly with employers and collaboratively with brokers, advisors, and referral partners.",
+            },
+          ].map((item) => (
+            <div key={item.title} className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+              <h3 className="text-lg font-semibold text-slate-900">{item.title}</h3>
+              <p className="mt-3 text-sm leading-6 text-slate-600">{item.text}</p>
+            </div>
+          ))}
+        </div>
+      </section>
 
-<section id="contact">
-<div class="container">
-<h2>Start a Conversation</h2>
-<p>Whether you're an employer exploring options, a broker looking for collaboration, or an advisor with client relationships, we'd welcome the opportunity to connect.</p>
-<form>
-<input placeholder="Name">
-<input placeholder="Email">
-<input placeholder="Company">
-<select>
-<option>I'm interested in...</option>
-<option>Employer Solutions</option>
-<option>Broker Partnership</option>
-<option>Referral Partnership</option>
-</select>
-<textarea placeholder="Message"></textarea>
-<button type="submit">Submit Inquiry</button>
-</form>
-</div>
-</section>
+      <section id="audiences" className="bg-slate-50 border-y border-slate-200">
+        <div className="max-w-6xl mx-auto px-6 py-20">
+          <SectionTitle
+            eyebrow="Who We Help"
+            title="Built for employers, brokers, and advisors"
+            text="Our model supports direct employer growth while also creating meaningful opportunities for strategic partners."
+          />
 
-<footer>
-<div class="container">
-<strong>JAM Growth Partners</strong>
-<p style="color:#666">Helping employers optimize healthcare, benefits, and workforce costs.</p>
-</div>
-</footer>
+          <div className="mt-12 grid md:grid-cols-3 gap-6">
+            {[
+              {
+                title: "Employers",
+                text: "Growing businesses looking for better ways to manage healthcare, benefits, payroll, and workforce-related costs.",
+              },
+              {
+                title: "Brokers",
+                text: "Independent brokers who want additional solutions and support without replacing trusted client relationships.",
+              },
+              {
+                title: "Advisors & Referral Partners",
+                text: "Consultants, CPAs, financial professionals, and business leaders who want a credible partner for client introductions.",
+              },
+            ].map((item) => (
+              <div key={item.title} className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+                <h3 className="text-lg font-semibold text-slate-900">{item.title}</h3>
+                <p className="mt-3 text-sm leading-6 text-slate-600">{item.text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-</body>
-</html>
+      <section className="max-w-6xl mx-auto px-6 py-20">
+        <div className="rounded-[2rem] bg-slate-900 text-white p-8 md:p-12">
+          <h2 className="text-3xl font-semibold tracking-tight">Start with a conversation, not a quote.</h2>
+          <p className="mt-4 max-w-3xl text-slate-300 leading-7">
+            The best solutions usually begin with a better understanding of where costs, complexity, and missed opportunities exist. We’re here to help you explore that clearly.
+          </p>
+          <a href="#contact-form" className="inline-block mt-7 rounded-2xl bg-white text-slate-900 px-5 py-3 text-sm font-medium hover:bg-slate-100">
+            Start a Conversation
+          </a>
+        </div>
+      </section>
+    </>
+  );
+}
+
+function SolutionsPage() {
+  return (
+    <div className="max-w-6xl mx-auto px-6 py-20">
+      <SectionTitle
+        eyebrow="Solutions"
+        title="Solutions for growing employers"
+        text="We organize our work around business outcomes, not just individual products."
+      />
+
+      <div className="mt-12 grid lg:grid-cols-2 gap-8">
+        {[
+          {
+            title: "Healthcare & Benefits Strategy",
+            bullets: [
+              "Funding strategy support",
+              "Healthcare cost management conversations",
+              "Group health and ancillary solutions",
+              "Benefits alignment for growing employers",
+            ],
+          },
+          {
+            title: "Workforce Cost Optimization",
+            bullets: [
+              "Tax-advantaged wellness strategies",
+              "Employee engagement programs",
+              "Employer cost-efficiency opportunities",
+              "Support for long-term workforce planning",
+            ],
+          },
+          {
+            title: "Payroll, HR & PEO Solutions",
+            bullets: [
+              "Payroll service options",
+              "HR infrastructure support",
+              "PEO brokerage guidance",
+              "Compliance-oriented solutions for growing teams",
+            ],
+          },
+          {
+            title: "Employee Protection & Supplemental Benefits",
+            bullets: [
+              "Voluntary benefit opportunities",
+              "Protection-oriented employee offerings",
+              "Individual health and related solutions",
+              "Cross-sell support for existing employer relationships",
+            ],
+          },
+        ].map((item) => (
+          <div key={item.title} className="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm">
+            <h3 className="text-2xl font-semibold text-slate-900">{item.title}</h3>
+            <ul className="mt-5 space-y-3 text-sm leading-6 text-slate-600">
+              {item.bullets.map((bullet) => (
+                <li key={bullet}>• {bullet}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+
+      <div className="mt-16 rounded-3xl border border-slate-200 bg-slate-50 p-8">
+        <h3 className="text-xl font-semibold text-slate-900">How we approach solutions</h3>
+        <p className="mt-3 text-slate-600 leading-7">
+          Rather than pushing one product at a time, we help employers look at how healthcare, benefits, payroll, and workforce services affect the bigger financial picture. That leads to better decisions and stronger long-term outcomes.
+        </p>
+      </div>
+    </div>
+  );
+}
+
+function PartnersPage() {
+  return (
+    <div className="max-w-6xl mx-auto px-6 py-20">
+      <SectionTitle
+        eyebrow="Partnerships"
+        title="Built for collaboration"
+        text="JAM Growth Partners is designed to work both directly with employers and alongside trusted professionals who already serve business leaders."
+      />
+
+      <div className="mt-12 grid md:grid-cols-3 gap-6">
+        {[
+          {
+            title: "For Brokers",
+            text: "We support brokers who want differentiated solutions, strategic collaboration, and additional ways to serve employer clients without replacing the relationship.",
+          },
+          {
+            title: "For Referral Partners",
+            text: "We work with professionals who have trusted executive relationships and want a credible platform to introduce when employer needs arise.",
+          },
+          {
+            title: "For Advisors",
+            text: "CPAs, consultants, financial professionals, and other advisors can partner with us when clients need support across workforce-related cost strategy.",
+          },
+        ].map((item) => (
+          <div key={item.title} className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+            <h3 className="text-xl font-semibold text-slate-900">{item.title}</h3>
+            <p className="mt-3 text-sm leading-6 text-slate-600">{item.text}</p>
+          </div>
+        ))}
+      </div>
+
+      <div className="mt-14 grid lg:grid-cols-2 gap-8">
+        <div className="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm">
+          <h3 className="text-xl font-semibold text-slate-900">Why partners work with us</h3>
+          <ul className="mt-5 space-y-3 text-sm leading-6 text-slate-600">
+            <li>• Broker-friendly collaboration model</li>
+            <li>• Access to multiple employer solution categories</li>
+            <li>• Strategic support in employer conversations</li>
+            <li>• Long-term residual income opportunities</li>
+            <li>• Relationship-first approach</li>
+          </ul>
+        </div>
+
+        <div className="rounded-3xl bg-slate-900 text-white p-8 shadow-sm">
+          <h3 className="text-xl font-semibold">Who makes a strong partner</h3>
+          <ul className="mt-5 space-y-3 text-sm leading-6 text-slate-300">
+            <li>• Independent brokers with employer relationships</li>
+            <li>• Consultants and advisors serving business owners</li>
+            <li>• Professionals with C-level connections</li>
+            <li>• Individuals who value warm introductions over cold selling</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function AboutPage() {
+  return (
+    <div className="max-w-6xl mx-auto px-6 py-20">
+      <SectionTitle
+        eyebrow="About"
+        title="A professional sales organization focused on employer growth and cost strategy"
+        text="JAM Growth Partners was built to help employers make more informed decisions around some of the largest and most important operating expenses inside their organizations."
+      />
+
+      <div className="mt-12 grid lg:grid-cols-2 gap-10">
+        <div className="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm">
+          <h3 className="text-xl font-semibold text-slate-900">What makes us different</h3>
+          <p className="mt-4 text-slate-600 leading-7">
+            Many firms approach employer needs one product at a time. We believe the better approach is to look at healthcare, payroll, benefits, and workforce services as part of a broader financial and operational strategy.
+          </p>
+          <p className="mt-4 text-slate-600 leading-7">
+            Our role is to connect employers and partners with practical solutions while maintaining a relationship-driven, consultative approach.
+          </p>
+        </div>
+
+        <div className="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm">
+          <h3 className="text-xl font-semibold text-slate-900">Leadership</h3>
+          <p className="mt-4 text-slate-600 leading-7">
+            <span className="font-semibold text-slate-900">Jeremiah Drobney, President</span>
+          </p>
+          <p className="mt-3 text-slate-600 leading-7">
+            Jeremiah founded JAM Growth Partners to bring together smarter strategies for employers, brokers, and advisors seeking better ways to manage healthcare, workforce costs, and business growth.
+          </p>
+        </div>
+      </div>
+
+      <div className="mt-12 rounded-3xl bg-slate-50 border border-slate-200 p-8">
+        <h3 className="text-xl font-semibold text-slate-900">Our mission</h3>
+        <p className="mt-3 text-slate-600 leading-7">
+          To help employers operate more efficiently while improving outcomes for both leadership teams and employees.
+        </p>
+      </div>
+    </div>
+  );
+}
+
+function ContactPage() {
+  return (
+    <div className="max-w-4xl mx-auto px-6 py-20">
+      <SectionTitle
+        eyebrow="Contact"
+        title="Start a conversation"
+        text="Whether you’re an employer exploring options, a broker looking for strategic collaboration, or an advisor with client relationships, we’d welcome the opportunity to connect."
+      />
+
+      <div id="contact-form" className="mt-12 rounded-3xl border border-slate-200 bg-white p-8 shadow-sm">
+        <div className="grid sm:grid-cols-2 gap-4">
+          <input className="rounded-2xl border border-slate-300 px-4 py-3 text-sm" placeholder="Name" />
+          <input className="rounded-2xl border border-slate-300 px-4 py-3 text-sm" placeholder="Email" />
+          <input className="rounded-2xl border border-slate-300 px-4 py-3 text-sm" placeholder="Company" />
+          <input className="rounded-2xl border border-slate-300 px-4 py-3 text-sm" placeholder="Phone" />
+          <select className="rounded-2xl border border-slate-300 px-4 py-3 text-sm sm:col-span-2 bg-white">
+            <option>I’m interested in...</option>
+            <option>Employer Solutions</option>
+            <option>Broker Partnership</option>
+            <option>Referral Partnership</option>
+            <option>Other</option>
+          </select>
+          <textarea className="rounded-2xl border border-slate-300 px-4 py-3 text-sm sm:col-span-2 min-h-[140px]" placeholder="How can we help?" />
+        </div>
+        <button className="mt-5 rounded-2xl bg-slate-900 text-white px-5 py-3 text-sm font-medium hover:opacity-90">
+          Submit Inquiry
+        </button>
+      </div>
+    </div>
+  );
+}
+
+export default function JAMGrowthPartnersWebsite() {
+  const [activePage, setActivePage] = useState("home");
+
+  const renderPage = () => {
+    switch (activePage) {
+      case "solutions":
+        return <SolutionsPage />;
+      case "partners":
+        return <PartnersPage />;
+      case "about":
+        return <AboutPage />;
+      case "contact":
+        return <ContactPage />;
+      default:
+        return <HomePage />;
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-slate-50 via-white to-slate-100 text-slate-900">
+      <header className="sticky top-0 z-20 border-b border-slate-200 bg-white/95 backdrop-blur shadow-sm">
+        <div className="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between gap-6">
+          <button onClick={() => setActivePage("home")} className="flex items-center gap-3 text-left">
+            {/* Replace /logo.png with your exported logo file from the PDF */}
+            <img src="/logo.png" alt="JAM Growth Partners" className="h-14 w-auto" />
+            <div className="leading-tight">
+              <div className="text-2xl font-semibold tracking-tight">JAM Growth Partners</div>
+              <div className="text-sm text-slate-500">Employer Cost Strategy & Workforce Solutions</div>
+            </div>
+          </button>
+
+          <nav className="hidden md:flex items-center gap-2 rounded-full border border-slate-200 bg-slate-50 p-1">
+            {navItems.map((item) => {
+              const isActive = activePage === item.id;
+              return (
+                <button
+                  key={item.id}
+                  onClick={() => setActivePage(item.id)}
+                  className={`rounded-full px-4 py-2 text-sm font-medium transition ${
+                    isActive
+                      ? "bg-slate-900 text-white"
+                      : "text-slate-600 hover:text-slate-900 hover:bg-white"
+                  }`}
+                >
+                  {item.label}
+                </button>
+              );
+            })}
+          </nav>
+
+          <button
+            onClick={() => setActivePage("contact")}
+            className="rounded-2xl bg-slate-900 text-white px-4 py-2.5 text-sm font-medium hover:opacity-90"
+          >
+            Contact
+          </button>
+        </div>
+      </header>
+
+      <main>{renderPage()}</main>
+
+      <footer className="border-t border-slate-200 bg-slate-50">
+        <div className="max-w-6xl mx-auto px-6 py-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+          <div>
+            <div className="font-semibold text-slate-900">JAM Growth Partners</div>
+            <div className="text-sm text-slate-500">Helping employers optimize healthcare, benefits, and workforce costs.</div>
+          </div>
+          <div className="text-sm text-slate-500">© 2026 JAM Growth Partners. All rights reserved.</div>
+        </div>
+      </footer>
+    </div>
+  );
+}

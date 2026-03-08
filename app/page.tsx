@@ -472,28 +472,66 @@ export default function Page() {
           </p>
         </div>
 
-        <form action="https://formspree.io/f/mojkvprq" method="POST" className="mt-12 rounded-3xl border border-slate-200 bg-white p-8 shadow-sm">
-          <div className="grid gap-4 sm:grid-cols-2">
-            <input className="rounded-2xl border border-slate-300 px-4 py-3 text-sm" placeholder="Name" />
-            <input className="rounded-2xl border border-slate-300 px-4 py-3 text-sm" placeholder="Email" />
-            <input className="rounded-2xl border border-slate-300 px-4 py-3 text-sm" placeholder="Company" />
-            <input className="rounded-2xl border border-slate-300 px-4 py-3 text-sm" placeholder="Phone" />
-            <select className="rounded-2xl border border-slate-300 bg-white px-4 py-3 text-sm sm:col-span-2">
-              <option>I’m interested in...</option>
-              <option>Employer Solutions</option>
-              <option>Broker Partnership</option>
-              <option>Referral Partnership</option>
-              <option>Other</option>
-            </select>
-            <textarea className="min-h-[140px] rounded-2xl border border-slate-300 px-4 py-3 text-sm sm:col-span-2" placeholder="How can we help?" />
-          </div>
-          <input type="hidden" name="_subject" value="New JAM Growth Partners Website Inquiry" />
-          <input type="hidden" name="_template" value="table" />
-          <input type="text" name="_gotcha" style={{display:'none'}} />
-          <button className="mt-5 rounded-2xl bg-slate-900 px-5 py-3 text-sm font-medium text-white hover:opacity-90">
-            Submit Inquiry
-          </button>
-        </form>
+<form action="https://formspree.io/f/mojkvprq" method="POST" className="mt-12 rounded-3xl border border-slate-200 bg-white p-8 shadow-sm">
+  <div className="grid gap-4 sm:grid-cols-2">
+    
+    <input
+      name="name"
+      className="rounded-2xl border border-slate-300 px-4 py-3 text-sm"
+      placeholder="Name"
+      required
+    />
+
+    <input
+      name="email"
+      type="email"
+      className="rounded-2xl border border-slate-300 px-4 py-3 text-sm"
+      placeholder="Email"
+      required
+    />
+
+    <input
+      name="company"
+      className="rounded-2xl border border-slate-300 px-4 py-3 text-sm"
+      placeholder="Company"
+    />
+
+    <input
+      name="phone"
+      className="rounded-2xl border border-slate-300 px-4 py-3 text-sm"
+      placeholder="Phone"
+    />
+
+    <select
+      name="interest"
+      className="rounded-2xl border border-slate-300 bg-white px-4 py-3 text-sm sm:col-span-2"
+    >
+      <option value="">I'm interested in...</option>
+      <option value="Employer Solutions">Employer Solutions</option>
+      <option value="Broker Partnership">Broker Partnership</option>
+      <option value="Referral Partnership">Referral Partnership</option>
+      <option value="Other">Other</option>
+    </select>
+
+    <textarea
+      name="message"
+      className="min-h-[140px] rounded-2xl border border-slate-300 px-4 py-3 text-sm sm:col-span-2"
+      placeholder="How can we help?"
+    />
+
+  </div>
+
+  <input type="hidden" name="_subject" value="New JAM Growth Partners Website Inquiry" />
+  <input type="hidden" name="_template" value="table" />
+  <input type="text" name="_gotcha" style={{ display: "none" }} />
+
+  <button
+    type="submit"
+    className="mt-5 rounded-2xl bg-slate-900 px-5 py-3 text-sm font-medium text-white hover:opacity-90"
+  >
+    Submit Inquiry
+  </button>
+</form>
       </section>
 
       <footer className="border-t border-slate-200 bg-slate-50">

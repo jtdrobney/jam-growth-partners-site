@@ -45,7 +45,7 @@ export default function PartnerNetworkPage() {
             margin: '0 0 22px 0',
           }}
         >
-          Turn trusted business relationships into long-term recurring revenue.
+          Turn trusted business relationships into long-term strategic opportunities.
         </h1>
 
         <p
@@ -60,8 +60,9 @@ export default function PartnerNetworkPage() {
           JAM Growth Partners is building a select network of executives,
           consultants, and relationship-driven professionals who can introduce
           employers to a differentiated workforce value strategy that can
-          enhance employee retention, improve perceived benefits value, and open
-          the door to ongoing residual compensation for the referring partner.
+          enhance employee retention, improve perceived benefits value, and
+          create the opportunity for partners to participate in the economics of
+          successful client relationships.
         </p>
 
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '14px' }}>
@@ -114,9 +115,9 @@ export default function PartnerNetworkPage() {
         >
           {[
             {
-              title: 'Residual Income Potential',
+              title: 'Referral Participation',
               text:
-                'Create an additional revenue stream through referred relationships rather than direct servicing.',
+                'Participate in the economics of successful client relationships through a structured referral model.',
             },
             {
               title: 'Client Value First',
@@ -246,9 +247,9 @@ export default function PartnerNetworkPage() {
               },
               {
                 step: '04',
-                title: 'You earn residuals',
+                title: 'You participate in the relationship',
                 text:
-                  'When the relationship is implemented and retained, you participate in recurring referral-based compensation.',
+                  'When a client relationship is implemented, partners participate in a structured referral-based compensation model tied to the ongoing success of the program.',
               },
             ].map((item) => (
               <div
@@ -422,10 +423,10 @@ export default function PartnerNetworkPage() {
                   margin: '0 0 20px 0',
                 }}
               >
-                The right partner opportunity should strengthen your
-                relationships, not complicate them. This model allows you to
-                introduce a differentiated employer-facing solution while JAM
-                handles strategy, positioning, and the client process.
+                The right partnership should strengthen your relationships, not
+                complicate them. This model allows you to introduce a
+                differentiated employer-facing solution while JAM handles
+                strategy, positioning, and the client process.
               </p>
 
               <ul
@@ -436,7 +437,7 @@ export default function PartnerNetworkPage() {
                   lineHeight: 1.9,
                 }}
               >
-                <li>Recurring referral-based compensation</li>
+                <li>Structured referral participation</li>
                 <li>Low operational burden on your end</li>
                 <li>Executive-level positioning</li>
                 <li>Meaningful client-facing value</li>

@@ -1,3 +1,7 @@
+'use client';
+
+import { useEffect, useState } from 'react';
+
 export const metadata = {
   title: 'Strategic Partner Opportunity | JAM Growth Partners',
   description:
@@ -9,13 +13,26 @@ export const metadata = {
 };
 
 export default function PartnerNetworkPage() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
     <main style={{ backgroundColor: '#ffffff', color: '#111827' }}>
       <section
         style={{
           maxWidth: '1180px',
           margin: '0 auto',
-          padding: '80px 24px 40px',
+          padding: isMobile ? '56px 20px 32px' : '80px 24px 40px',
         }}
       >
         <div
@@ -37,7 +54,7 @@ export default function PartnerNetworkPage() {
 
         <h1
           style={{
-            fontSize: 'clamp(2.5rem, 5vw, 4.5rem)',
+            fontSize: isMobile ? '2.25rem' : 'clamp(2.5rem, 5vw, 4.5rem)',
             lineHeight: 1.05,
             fontWeight: 800,
             letterSpacing: '-0.03em',
@@ -50,11 +67,11 @@ export default function PartnerNetworkPage() {
 
         <p
           style={{
-            fontSize: '1.18rem',
+            fontSize: isMobile ? '1.02rem' : '1.18rem',
             lineHeight: 1.75,
             color: '#4b5563',
             maxWidth: '800px',
-            margin: '0 0 34px 0',
+            margin: '0 0 26px 0',
           }}
         >
           JAM Growth Partners is building a select network of executives,
@@ -65,7 +82,32 @@ export default function PartnerNetworkPage() {
           successful client relationships.
         </p>
 
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '14px' }}>
+        <div
+          style={{
+            backgroundColor: '#f9fafb',
+            border: '1px solid #e5e7eb',
+            borderRadius: '14px',
+            padding: '18px 20px',
+            maxWidth: '760px',
+            marginBottom: '32px',
+            fontSize: '0.98rem',
+            lineHeight: 1.6,
+            color: '#374151',
+          }}
+        >
+          <strong>Important:</strong> This is not an affiliate program or lead
+          marketplace. We work with a limited number of partners who can make
+          credible introductions to employers.
+        </div>
+
+        <div
+          style={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            gap: '14px',
+            flexDirection: isMobile ? 'column' : 'row',
+          }}
+        >
           <a
             href="#partner-form"
             style={{
@@ -76,6 +118,8 @@ export default function PartnerNetworkPage() {
               color: '#ffffff',
               textDecoration: 'none',
               fontWeight: 700,
+              textAlign: 'center',
+              width: isMobile ? '100%' : 'auto',
             }}
           >
             Request a Private Conversation
@@ -92,6 +136,8 @@ export default function PartnerNetworkPage() {
               textDecoration: 'none',
               fontWeight: 700,
               border: '1px solid #d1d5db',
+              textAlign: 'center',
+              width: isMobile ? '100%' : 'auto',
             }}
           >
             See How It Works
@@ -103,13 +149,15 @@ export default function PartnerNetworkPage() {
         style={{
           maxWidth: '1180px',
           margin: '0 auto',
-          padding: '24px 24px 72px',
+          padding: isMobile ? '12px 20px 56px' : '24px 24px 72px',
         }}
       >
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
+            gridTemplateColumns: isMobile
+              ? '1fr'
+              : 'repeat(auto-fit, minmax(260px, 1fr))',
             gap: '18px',
           }}
         >
@@ -176,7 +224,7 @@ export default function PartnerNetworkPage() {
           style={{
             maxWidth: '1180px',
             margin: '0 auto',
-            padding: '80px 24px',
+            padding: isMobile ? '56px 20px' : '80px 24px',
           }}
         >
           <div style={{ maxWidth: '760px', marginBottom: '40px' }}>
@@ -195,7 +243,7 @@ export default function PartnerNetworkPage() {
 
             <h2
               style={{
-                fontSize: 'clamp(2rem, 4vw, 3rem)',
+                fontSize: isMobile ? '2rem' : 'clamp(2rem, 4vw, 3rem)',
                 lineHeight: 1.1,
                 fontWeight: 800,
                 margin: '0 0 18px 0',
@@ -222,7 +270,9 @@ export default function PartnerNetworkPage() {
           <div
             style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
+              gridTemplateColumns: isMobile
+                ? '1fr'
+                : 'repeat(auto-fit, minmax(240px, 1fr))',
               gap: '18px',
             }}
           >
@@ -300,13 +350,13 @@ export default function PartnerNetworkPage() {
         style={{
           maxWidth: '1180px',
           margin: '0 auto',
-          padding: '80px 24px',
+          padding: isMobile ? '56px 20px' : '80px 24px',
         }}
       >
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: '1.1fr 0.9fr',
+            gridTemplateColumns: isMobile ? '1fr' : '1.1fr 0.9fr',
             gap: '36px',
           }}
         >
@@ -326,7 +376,7 @@ export default function PartnerNetworkPage() {
 
             <h2
               style={{
-                fontSize: 'clamp(2rem, 4vw, 3rem)',
+                fontSize: isMobile ? '2rem' : 'clamp(2rem, 4vw, 3rem)',
                 lineHeight: 1.1,
                 fontWeight: 800,
                 margin: '0 0 18px 0',
@@ -352,7 +402,9 @@ export default function PartnerNetworkPage() {
             <div
               style={{
                 display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
+                gridTemplateColumns: isMobile
+                  ? '1fr'
+                  : 'repeat(auto-fit, minmax(240px, 1fr))',
                 gap: '16px',
               }}
             >
@@ -386,8 +438,7 @@ export default function PartnerNetworkPage() {
               style={{
                 borderRadius: '20px',
                 padding: '28px',
-                background:
-                  'linear-gradient(180deg, #111827 0%, #1f2937 100%)',
+                background: 'linear-gradient(180deg, #111827 0%, #1f2937 100%)',
                 color: '#ffffff',
                 boxShadow: '0 12px 24px rgba(17,24,39,0.12)',
               }}
@@ -458,7 +509,7 @@ export default function PartnerNetworkPage() {
           style={{
             maxWidth: '1180px',
             margin: '0 auto',
-            padding: '80px 24px',
+            padding: isMobile ? '56px 20px' : '80px 24px',
           }}
         >
           <div style={{ maxWidth: '860px' }}>
@@ -477,7 +528,7 @@ export default function PartnerNetworkPage() {
 
             <h2
               style={{
-                fontSize: 'clamp(2rem, 4vw, 3rem)',
+                fontSize: isMobile ? '2rem' : 'clamp(2rem, 4vw, 3rem)',
                 lineHeight: 1.1,
                 fontWeight: 800,
                 margin: '0 0 18px 0',
@@ -509,13 +560,13 @@ export default function PartnerNetworkPage() {
         style={{
           maxWidth: '1180px',
           margin: '0 auto',
-          padding: '80px 24px 100px',
+          padding: isMobile ? '56px 20px 80px' : '80px 24px 100px',
         }}
       >
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: '1fr 1fr',
+            gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr',
             gap: '30px',
             alignItems: 'start',
           }}
@@ -536,7 +587,7 @@ export default function PartnerNetworkPage() {
 
             <h2
               style={{
-                fontSize: 'clamp(2rem, 4vw, 3rem)',
+                fontSize: isMobile ? '2rem' : 'clamp(2rem, 4vw, 3rem)',
                 lineHeight: 1.1,
                 fontWeight: 800,
                 margin: '0 0 18px 0',
@@ -564,13 +615,13 @@ export default function PartnerNetworkPage() {
             style={{
               border: '1px solid #e5e7eb',
               borderRadius: '20px',
-              padding: '28px',
+              padding: isMobile ? '22px' : '28px',
               backgroundColor: '#ffffff',
               boxShadow: '0 8px 18px rgba(0,0,0,0.04)',
             }}
           >
             <form
-              action="https://formspree.io/f/xnjgvvor"
+              action="https://formspree.io/f/your-form-id"
               method="POST"
               style={{
                 display: 'grid',
@@ -578,77 +629,28 @@ export default function PartnerNetworkPage() {
               }}
             >
               <div>
-                <label
-                  htmlFor="name"
-                  style={{
-                    display: 'block',
-                    marginBottom: '8px',
-                    fontWeight: 600,
-                    color: '#111827',
-                  }}
-                >
+                <label htmlFor="name" style={labelStyle}>
                   Full Name
                 </label>
-                <input
-                  id="name"
-                  name="name"
-                  type="text"
-                  required
-                  style={inputStyle}
-                />
+                <input id="name" name="name" type="text" required style={inputStyle} />
               </div>
 
               <div>
-                <label
-                  htmlFor="email"
-                  style={{
-                    display: 'block',
-                    marginBottom: '8px',
-                    fontWeight: 600,
-                    color: '#111827',
-                  }}
-                >
+                <label htmlFor="email" style={labelStyle}>
                   Email Address
                 </label>
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  required
-                  style={inputStyle}
-                />
+                <input id="email" name="email" type="email" required style={inputStyle} />
               </div>
 
               <div>
-                <label
-                  htmlFor="company"
-                  style={{
-                    display: 'block',
-                    marginBottom: '8px',
-                    fontWeight: 600,
-                    color: '#111827',
-                  }}
-                >
+                <label htmlFor="company" style={labelStyle}>
                   Company / Organization
                 </label>
-                <input
-                  id="company"
-                  name="company"
-                  type="text"
-                  style={inputStyle}
-                />
+                <input id="company" name="company" type="text" style={inputStyle} />
               </div>
 
               <div>
-                <label
-                  htmlFor="role"
-                  style={{
-                    display: 'block',
-                    marginBottom: '8px',
-                    fontWeight: 600,
-                    color: '#111827',
-                  }}
-                >
+                <label htmlFor="role" style={labelStyle}>
                   Current Role
                 </label>
                 <input
@@ -661,15 +663,7 @@ export default function PartnerNetworkPage() {
               </div>
 
               <div>
-                <label
-                  htmlFor="network"
-                  style={{
-                    display: 'block',
-                    marginBottom: '8px',
-                    fontWeight: 600,
-                    color: '#111827',
-                  }}
-                >
+                <label htmlFor="network" style={labelStyle}>
                   Tell us about your network or referral interest
                 </label>
                 <textarea
@@ -699,6 +693,7 @@ export default function PartnerNetworkPage() {
                   fontSize: '1rem',
                   fontWeight: 700,
                   cursor: 'pointer',
+                  width: '100%',
                 }}
               >
                 Request a Conversation
@@ -710,6 +705,13 @@ export default function PartnerNetworkPage() {
     </main>
   );
 }
+
+const labelStyle: React.CSSProperties = {
+  display: 'block',
+  marginBottom: '8px',
+  fontWeight: 600,
+  color: '#111827',
+};
 
 const inputStyle: React.CSSProperties = {
   width: '100%',
